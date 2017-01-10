@@ -1,0 +1,54 @@
+# Straight forward Makefile to compile all examples in a row
+
+#INCDIR=-I. -I/usr/include/cairo -I/usr/include/libxml2/ -I/usr/include/libpng15
+INCDIR=-I. -I/usr/include/cairo -I/usr/include/libxml2/ 
+CC = g++ -g
+#LIBS=-lGLESv2 -lEGL -lm -lwayland-client -l:libwayland-egl.so.1 -lwayland-cursor -lcairo -lxml2 -l:libpng15.so.15
+LIBS=-lGLESv2 -lEGL -lm -lwayland-client -l:libwayland-egl.so.1 -lwayland-cursor -lcairo -lxml2 -l:libpng12.so.0
+
+CFLAGS += -I. -DUSE_WAY -Wno-write-strings
+
+
+SRC=./Util.cpp \
+	./Math.cpp \
+	./Random.cpp \
+	./VertexFormat.cpp \
+	./glMatrix.cpp \
+	./glVector2.cpp \
+	./glVector3.cpp \
+	./Shader.cpp \
+	./Camera.cpp \
+	./Texture.cpp \
+	./DrawableObject.cpp \
+	./Material.cpp \
+	./QuadTree.cpp \
+	./GroundPlane.cpp \
+	./Streetlight.cpp \
+	./Car.cpp \
+	./Cars.cpp \
+	./Cockpit.cpp \
+	./RoadRoute.cpp \
+	./SkyBox.cpp \
+	./Light.cpp \
+	./AABB.cpp \
+	./Buildings.cpp \
+	./City.cpp \
+	./HUD.cpp \
+	./ValidationBar.cpp \
+	./Application.cpp \
+	./WaylandWindow.cpp \
+	./main.cpp \
+	./UDPSocket.cpp \
+	./Config.cpp
+
+
+default: all
+
+all: ./grfxEmul_way 
+
+clean:
+	rm -f grfxEmul_way
+	#find . -name "CH??_*" | xargs rm -f
+
+./grfxEmul_way: ${SRC}
+	$(CC) $(CFLAGS) ${COMMONSRC} ${SRC} -o ./$@ ${INCDIR} ${LIBS}

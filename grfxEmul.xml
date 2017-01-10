@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<grfxEmul>
+<application width="1200" height="800" tesselation_factor="1" quadTree_size="4" world_size="1024" virtual_pos="1" benchmark_mode="0">
+<!-- ASD Demo defaults for Nissan, CES, etc -->
+<!-- <application width="1920" height="1080" tesselation_factor="1" quadTree_size="4" world_size="1024" virtual_pos="1">  -->
+<debugstat Enable="1"/>
+</application>
+<autopilot>
+<flighpath coord3d="622.000,110.000,512.000"/>
+<flighpath coord3d="850.000,50.000,750.000"/>
+<flighpath coord3d="850.000,50.000,800.000"/>
+<flighpath coord3d="800.000,50.000,850.000"/>
+<flighpath coord3d="750.000,50.000,850.000"/>
+<flighpath coord3d="700.000,70.000,800.000"/>
+<flighpath coord3d="560.000,110.000,512.000"/>
+<flighpath coord3d="450.000,70.000,150.000"/>
+<flighpath coord3d="300.000,50.000,100.000"/>
+<flighpath coord3d="250.000,50.000,100.000"/>
+<flighpath coord3d="200.000,50.000,150.000"/>
+<flighpath coord3d="200.000,50.000,200.000"/>
+</autopilot>
+<home_hud>
+<button posx="385" posy="150" image="images/VideoText.png" visible="1"/>
+<button posx="370" posy="300" image="images/VideoBut.png" action="VideoCmd1" visible="1"/>
+<button posx="1350" posy="150" image="images/NavText.png" visible="1"/>
+<button posx="1390" posy="400" image="images/NavBut.png" action=":NavCB" visible="1"/> 
+<button posx="370" posy="500" image="images/VideoBut2.png" action="VideoCmd2" visible="1"/> 
+</home_hud>
+<ces_hud>
+<!-- Background -->
+<button posx="0" posy="0" image="images/CES_HMI_bg1.png" action=":CESHideHMI" visible="1"/>
+<button posx="400" posy="100" image="images/CES_HMI_bg.png" action=":CESShowHMI" visible="1"/>
+<!-- Intel Logo -->
+<button posx="885" posy="761" image="images/Intel_Logo1.png" visible="1"/>
+<!-- Seat Heaters -->
+<button posx="700" posy="111" image="images/SeatHeatLOn.png" action=":CESSeatHeatL" visible="1"/>
+<button posx="990" posy="111" image="images/SeatHeatR.png" action=":CESSeatHeatR" visible="1"/>
+<!-- Temp Counter -->
+<button posx="700" posy="236" image="images/TempCounter21.png" visible="1"/>
+<button posx="990" posy="236" image="images/TempCounter18.png" visible="1"/>
+<!-- Side Temp -->
+<button posx="500" posy="111" image="images/SideTempUpL1.png" action=":CESTempLUp" visible="1"/>
+<button posx="500" posy="299" image="images/SideTempDownLFull.png" action=":CESTempLDown" visible="1"/>
+<button posx="1270" posy="111" image="images/SideTempUpR0.png" action=":CESTempRUp" visible="1"/>
+<button posx="1270" posy="299" image="images/SideTempDownR3.png" action=":CESTempRDown" visible="1"/>
+<!-- AirFlow -->
+<button posx="500" posy="511" image="images/AirDown.png" action=":CESAirDown" visible="1"/>
+<button posx="500" posy="636" image="images/AirStraightOn.png" action=":CESAirStraight" visible="1"/>
+<button posx="500" posy="761" image="images/AirUp.png" action=":CESAirUp" visible="1"/>
+<!-- AC / Auto -->
+<button posx="740" posy="636" image="images/ACOn.png" action=":CESAc" visible="1"/>
+<button posx="980" posy="636" image="images/Auto.png" action=":CESAuto" visible="1"/>
+<!-- Blower Strength -->
+<button posx="740" posy="511" image="images/FanLeftFull.png" action=":CESFanDown" visible="1"/>
+<button posx="960" posy="511" image="images/FanRight1.png" action=":CESFanUp" visible="1"/>
+<!-- WinHeat -->
+<button posx="1220" posy="511" image="images/WinHeatMax.png" action=":CESHeatMax" visible="1"/>
+<button posx="1220" posy="636" image="images/WinHeatRearOn.png" action=":CESHeatRear" visible="1"/>
+<button posx="1220" posy="761" image="images/WinHeatFront.png" action=":CESHeatFront" visible="1"/>
+</ces_hud>
+<bar_hud>
+<!-- <button posx="825" posy="0" image="images/Intel_Logo1.png" visible="1"/> -->
+<!-- <button posx="978" posy="0" image="images/nissan1.png" visible="1"/> -->
+<button posx="10" posy="10" image="images/home.png" action=":HomeCB" visible="1"/>
+<button posx="110" posy="10" image="images/plus.PNG" action=":Plus" visible="1"/>
+<button posx="210" posy="10" image="images/minus.PNG" action=":Minus" visible="1"/>
+<button posx="310" posy="10" image="images/bw.PNG" action="BW" visible="1"/>
+<button posx="410" posy="10" image="images/top.PNG" action="TOP" visible="1"/>
+<button posx="510" posy="10" image="images/GpuTop.png" action="GpuTop" visible="1"/>
+<button posx="710" posy="10" image="images/VideoBut2S.png" action="VideoCmd2" visible="1"/>
+<button posx="810" posy="10" image="images/VideoBut1S.png" action="VideoCmd1" visible="1"/>
+<button posx="910" posy="10" image="images/NavButS.png" action=":NavCB" visible="1"/>
+<button posx="1380" posy="10" image="images/quadTree.png" action=":QuadTree" visible="1"/>
+<button posx="1470" posy="10" image="images/stats.png" action=":Stats" visible="1"/>
+<button posx="1560" posy="10" image="images/DepthCom.png" action=":DCCB" visible="1"/>
+<button posx="1650" posy="10" image="images/Wireframe.png" action=":WfCB" visible="1"/>
+<button posx="1740" posy="10" image="images/Traffic1.png" action=":TrafficCB" visible="1"/>
+<button posx="1830" posy="10" image="images/Exit.png" action=":ExitCB" visible="1"/>
+</bar_hud>
+</grfxEmul>

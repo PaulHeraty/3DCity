@@ -1,0 +1,76 @@
+# Straight forward Makefile to compile all examples in a row
+OBJDIR=X11_ES2
+TARG=grfxEmul_x11
+INCDIR=-I. -I/usr/include/cairo -I/usr/include/libxml2/ -I/usr/include/libpng15
+CC = g++ -g -std=c++11
+
+LIBS=-lGLESv2 -lEGL -lm -lX11 -lcairo -lxml2 -lpng
+
+CFLAGS += -I. -DUSE_X11 -Wno-write-strings 
+#CFLAGS += -DGENERATE_XML
+
+OBJS = $(patsubst ./%.cpp,$(OBJDIR)/%.o,$(SRC))
+
+SRC=./Util.cpp \
+	./Math.cpp \
+	./Random.cpp \
+	./VertexFormat.cpp \
+	./glMatrix.cpp \
+	./glVector2.cpp \
+	./glVector3.cpp \
+	./Shader.cpp \
+	./Camera.cpp \
+	./Texture.cpp \
+	./DrawableObject.cpp \
+	./Material.cpp \
+	./QuadTree.cpp \
+	./GroundPlane.cpp \
+	./Streetlight.cpp \
+	./Car.cpp \
+	./Cars.cpp \
+	./Cockpit.cpp \
+	./RoadRoute.cpp \
+	./SkyBox.cpp \
+	./Light.cpp \
+	./AABB.cpp \
+	./Buildings.cpp \
+	./City.cpp \
+	./HUD.cpp \
+	./ValidationBar.cpp \
+	./Application.cpp \
+	./X11Window.cpp \
+	./main.cpp \
+	./UDPSocket.cpp \
+	./Config.cpp
+
+ifeq ($(USE_SPNAV), 1)
+SRC +=  ./spnav_ctrl.cpp
+CFLAGS += -DSPACENAV
+INCDIR += -Ilibspnav/
+LIBS +=  -lspnav -Llibspnav/
+endif
+
+ifeq ($(USE_PERFQ), 1)
+SRC += ./PerfQueries.cpp
+CFLAGS += -DUSE_PERFQ
+endif
+
+default: all
+
+all: ./grfxEmul_x11
+
+clean:
+	@echo Cleaning up...
+	@rm -rf $(OBJDIR)
+	@rm $(TARG)
+	#find . -name "CH??_*" | xargs rm -f
+	@echo Done.
+
+$(OBJDIR):
+	mkdir $(OBJDIR)
+
+$(OBJDIR)/%.o: %.cpp 
+	$(CC) $(CFLAGS) $(INCDIR) -c $< -o $@
+
+$(TARG):  $(OBJDIR) $(OBJS)
+	$(CC) -o $@ $(OBJS) $(LIBS) 

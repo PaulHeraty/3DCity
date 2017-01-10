@@ -1,0 +1,21 @@
+# Straight forward Makefile to compile all examples in a row
+
+INCDIR=-I. -I/usr/include/libxml2/
+CC = g++ -g
+LIBS=-lxml2
+
+CFLAGS += -I. -DUSE_X11 -Wno-write-strings 
+
+
+SRC=./XMLTest.cpp \
+	./Config.cpp
+
+default: all
+
+all: ./XMLTest
+
+clean:
+	rm -f XMLTest
+
+./XMLTest: ${SRC}
+	$(CC) $(CFLAGS) ${COMMONSRC} ${SRC} -o ./$@ ${INCDIR} ${LIBS}
